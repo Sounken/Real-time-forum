@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Forum</title>
+   <link rel="stylesheet" href="css/style.css">
+   <!-- import font awsome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+   <div class="header">
+      <img src="css/logo.png" alt="logo" style="  margin-top: 2rem; margin-left: auto; margin-right: auto; width: 25rem;">
+      <!-- <h1 style="font-family: 'Roboto Mono', monospace; font-weight: bold; font-size: 36px;">Realtime Forum<br>Version 2.0</h1> -->
+      <!-- Logged In Message -->
+      <div id="logged-in-message" style="display: none;">
+         <p class="userlist-title">
+            <i class="fas fa-door-open icon"></i>
+           <span id="welcome-message"></span>
+         </p>
+         <p class="userlist-title">
+           <i class="fas fa-clock icon"></i>
+           <span id="current-time-message"></span>
+         </p>
+         <form id="logout-form" method="post">
+           <button type="submit" id="logout-button">Logout</button>
+         </form>
+       </div>
+   </div>
+   <!-- Login/Register Form -->
+   <form class="login-form" id="login-form" method="post">
+      <label for="username">Login</label>
+      <input type="text" name="username" id="username" placeholder="Enter your login" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Enter your password" required>
+      <button type="submit" id="login-button">Login</button>
+      <button type="button" id="register-button">Register</button>
+   </form>
+   <!-- Register Form -->
+   <form class="register-form" id="register-form" method="post" style="display: none;">
+      <label for="firstname">First Name (max. 30 characters): </label>
+      <input type="text" id="firstname" name="firstname" placeholder="First Name" maxlength="30" required><br>
+      <label for="lastname">Last Name (max. 30 characters): </label>
+      <input type="text" id="lastname" name="lastname" placeholder="Last Name" maxlength="30" required><br>
+      <label for="username">Username (max. 20 characters): </label>
+      <input type="text" id="reg-username" name="username" placeholder="Username" maxlength="20" required><br>
+      <label for="email">Email: </label>
+      <input type="email" id="email" name="email" placeholder="Email" required><br>
+      <label for="age">Age (0-150): </label>
+      <input type="number" id="age" name="age" placeholder="Age" min="0" max="150" required><br>
+      <label for="gender">Gender: </label>
+      <select name="gender" id="gender" required>
+         <option value="" disabled selected>Select gender</option>
+         <option value="male">Male</option>
+         <option value="female">Female</option>
+         <option value="other">Other</option>
+      </select>
+      <br>
+      <label for="password">Password (min. 8 characters): </label>
+      <input type="password" id="reg-password" name="password" placeholder="Password" minlength="1" required><br>
+      <label for="confpassword">Confirm Password: </label>
+      <input type="password" id="confpassword" name="confpassword" placeholder="Confirm Password" required><br>
+      <button type="submit" id="register-submit-button">Register</button>
+      <br>
+      <button type="submit" id="login-switch-button">Back to Login</button>
+   </form>
+   <!--registration-success div -->
+   <div id="registration-success" style="display: none;">
+      <h2>Registration Successful!</h2>
+      <p>You can now login with your new account.</p>
+   </div>
+   <div id="login-error" style="display: none;">
+      <h2>You where already loged in to the page!</h2>
+      <p>We are login you out from other devices, please login again</p>
+   </div>
+   <div id="login-error2" style="display: none;">
+      <h2>You are beeing logged out!</h2>
+      <p>You are forced to logout in 5 seconds</p>
+   </div>
+   <div id="login-error3" style="display: none;">
+      <h2>User dont exist!</h2>
+      <p>The users you tried to login with does not exist! please register</p>
+   </div>
+   <div id="login-error4" style="display: none;">
+      <h2>Wrong password!</h2>
+      <p>You typed in the wrong password please try again.</p>
+   </div>
+   <div id="registration-error" style="display: none;">
+   </div>
+   <div class="container" style="display: none;">
+      <div class="left-sidebar">
+         <h2 class="userlist-title" style="margin-right: 40px; margin-bottom: 20px;"> <i class="fas fa-th-list"></i>
+            Categories </h2>
+         <ul>
+         </ul>
+      </div>
+      <div class="main-content">
+         <div class="posts">
+            <h3>Page is not loading!</h3>
+            <div class="post">
+               <h4 class="post-title">Error</h4>
+               <p class="post-content">The website is not connection to the websockets correcly. please refresh the page
+               </p>
+               <div class="post-meta">
+               </div>
+               <div class="comments-popup">
+                  <div class="comments-popup-content">
+                     <span class="comments-popup-close">&times;</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="new-post-form">
+            <h3>New Post</h3>
+            <form id="new-post-form">
+               <input type="text" name="title" placeholder="Title" required>
+               <textarea name="content" placeholder="Post content" required></textarea>
+               <label for="category">Category:</label>
+               <select name="category" id="category" required>
+                  <option value="">Select a category</option>
+               </select>
+               <button type="submit">Create Post</button>
+            </form>
+         </div>
+      </div>
+      <div class="right-sidebar">
+         <center>
+            <h2 class="userlist-title" style="margin-right: 40px;"> <i class="fas fa-users"></i> Userlist </h2>
+         </center>
+         <div id="user-list">
+
+         </div>
+         <div id="offline-list">
+
+         </div>
+      </div>
+</body>
+<script src="js/forms.js"></script>
+
+</html>
